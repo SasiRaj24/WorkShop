@@ -1,0 +1,46 @@
+{% extends 'music/nav.html' %}
+
+{% block content %}
+
+<div class="container">
+  <br>
+<h2>Movie details:</h2>
+<div class="row">
+<div class="col-md-12">
+<div class="card" style="margin:10px;">
+    <img class="card-img-top" src="{{ album.image.url }}" alt="{{album.name}} image" style="width:100%;">
+    <div class="card-body">
+      <h4 class="card-title">Details:</h4>
+      <p class="card-text"><b>Name:</b> {{ album.name }}</p>
+      <p class="card-text"><b>about:</b> {{ album.about }}</p>
+      <p class="card-text"><b>date of upload:</b> {{ album.upload_date }}</p>
+        <h4 class="card-title">Songs:</h4>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Song name</th>
+                <th>Artist</th>
+                <th>play it</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for song in album.song_set.all %}
+            <tr>
+              <td> {{song.song_name}} </td>
+              <td> {{song.artist}} </td>
+              <td> <audio controls>
+                    <source src="{{song.song_location.url}}" type="audio/mp3">
+                  </audio>
+                 </td>
+           </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

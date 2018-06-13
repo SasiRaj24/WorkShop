@@ -1,0 +1,12 @@
+<h1>Registration Form</h1>
+<form method="post">
+	{% csrf_token %}
+	{% for field in form %}
+	<p>{{field.label_tag}}</p>
+	<p>{{field}}</p>
+	{% for err in field.errors %}
+		<p style="color: red;">{{err}}</p>
+		{%endfor%}
+	{% endfor%}
+	<button type="submit">REGISTER</button>
+</form>

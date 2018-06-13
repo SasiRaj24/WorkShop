@@ -1,0 +1,22 @@
+{% extends 'music/nav.html' %}
+
+{% block content %}
+<div class="container">
+  <br>
+<h2>List of movie or albums :</h2>
+<div class="row">
+{% for album in movie_list %}
+<div class="col-md-4">
+<div class="card" style="width:350px;margin:10px;">
+    <img class="card-img-top" src="{{ album.image.url }}/" alt="{{album.name}} image" style="width:100%;height:300px;">
+    <div class="card-body">
+      <h4 class="card-title">{{album.name}}</h4>
+      <a href="/music/{{album.id}}/" class="btn btn-primary">Songs</a>
+    </div>
+  </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}
